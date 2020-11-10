@@ -2,6 +2,7 @@ package com.test.interview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.test.interview.android_thread.asynctask.AsyncTaskAct;
+import com.test.interview.android_ui.android_fragment.FragmentAct;
+import com.test.interview.android_ui.android_service.ServiceAct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = new RecyclerView(this);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         addContentView(recyclerView, layoutParams);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
+        GridLayoutManager manager = new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(manager);
         MyAdapter adapter = new MyAdapter();
         recyclerView.setAdapter(adapter);
@@ -42,6 +45,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         list = new ArrayList<>();
         list.add(new BeanData("AsyncTask","AsyncTask"));
         list.add(new BeanData("IntenService","IntenService"));
+        list.add(new BeanData("Fragment","Fragment"));
     }
 
     @NonNull
@@ -53,7 +57,22 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(parent.getContext(), AsyncTaskAct.class);
+                int adapterPosition = viewHolder.getAdapterPosition();
+                BeanData data = list.get(adapterPosition);
+                String action = data.getAction();
+                Class clz =null;
+                switch (action) {
+                    case "AsyncTask":
+                        clz = AsyncTaskAct.class;
+                        break;
+                    case "IntenService":
+                        clz = ServiceAct.class;
+                        break;
+                    case "Fragment":
+                        clz = FragmentAct.class;
+                        break;
+                }
+                Intent intent = new Intent(parent.getContext(), clz);
                 parent.getContext().startActivity(intent);
             }
         });
@@ -88,6 +107,14 @@ class BeanData {
 
     public BeanData(String title,String action) {
         this.title = title;
+        this.action = action;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
         this.action = action;
     }
 

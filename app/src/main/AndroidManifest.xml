@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".android_thread.asynctask.AsyncTaskAct" />
         <activity android:name=".android_ui.android_view.ViewAct" />
+        <activity android:name=".android_ui.android_fragment.FragmentAct" />
+        <activity android:name=".android_ui.android_service.ServiceAct" />
     </application>
 
 </manifest>
