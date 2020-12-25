@@ -14,9 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-public class FragmentA extends Fragment {
+public class FragmentB extends Fragment {
 
-    private String TAG = FragmentA.class.getSimpleName();
+    private String TAG = FragmentB.class.getSimpleName();
     private FragmentActivity activity;
 
 
@@ -36,7 +36,7 @@ public class FragmentA extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add, container, false);
+        return inflater.inflate(R.layout.fragment_replace, container, false);
     }
 
     @Override

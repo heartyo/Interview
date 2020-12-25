@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.test.interview.android_thread.asynctask.AsyncTaskAct;
 import com.test.interview.android_ui.android_fragment.FragmentAct;
 import com.test.interview.android_ui.android_service.ServiceAct;
+import com.test.interview.android_ui.android_view.ViewAct;
+import com.test.interview.fromwork.HandlerAct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = new RecyclerView(this);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         addContentView(recyclerView, layoutParams);
-        GridLayoutManager manager = new GridLayoutManager(this,3);
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(manager);
         MyAdapter adapter = new MyAdapter();
         recyclerView.setAdapter(adapter);
@@ -39,39 +41,29 @@ public class MainActivity extends AppCompatActivity {
 
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    List<BeanData> list ;
+    List<BeanData> list;
 
     public MyAdapter() {
         list = new ArrayList<>();
-        list.add(new BeanData("AsyncTask","AsyncTask"));
-        list.add(new BeanData("IntenService","IntenService"));
-        list.add(new BeanData("Fragment","Fragment"));
+        list.add(new BeanData("Handler", "Handler", HandlerAct.class));
+        list.add(new BeanData("AsyncTask", "AsyncTask", AsyncTaskAct.class));
+        list.add(new BeanData("IntenService", "IntenService", ServiceAct.class));
+        list.add(new BeanData("Fragment", "Fragment", FragmentAct.class));
+        list.add(new BeanData("View", "View", ViewAct.class));
     }
 
     @NonNull
     @Override
 
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int adapterPosition = viewHolder.getAdapterPosition();
                 BeanData data = list.get(adapterPosition);
-                String action = data.getAction();
-                Class clz =null;
-                switch (action) {
-                    case "AsyncTask":
-                        clz = AsyncTaskAct.class;
-                        break;
-                    case "IntenService":
-                        clz = ServiceAct.class;
-                        break;
-                    case "Fragment":
-                        clz = FragmentAct.class;
-                        break;
-                }
+                Class clz = data.getaClass();
                 Intent intent = new Intent(parent.getContext(), clz);
                 parent.getContext().startActivity(intent);
             }
@@ -104,10 +96,21 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 class BeanData {
     private String title;
     private String action;
+    private Class<?> aClass;
 
-    public BeanData(String title,String action) {
+
+    public BeanData(String title, String action, Class<?> aClass) {
         this.title = title;
         this.action = action;
+        this.aClass = aClass;
+    }
+
+    public Class<?> getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class<?> aClass) {
+        this.aClass = aClass;
     }
 
     public String getAction() {
