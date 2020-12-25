@@ -3,7 +3,6 @@ package com.test.interview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -12,14 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.test.interview.android_thread.asynctask.AsyncTaskAct;
 import com.test.interview.android_ui.android_fragment.FragmentAct;
 import com.test.interview.android_ui.android_service.ServiceAct;
 import com.test.interview.android_ui.android_view.ViewAct;
-import com.test.interview.fromwork.HandlerAct;
+import com.test.interview.framwork.HandlerAct;
 
 import java.util.ArrayList;
 import java.util.List;
