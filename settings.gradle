@@ -1,2 +1,5 @@
+include ':sdk-framework-library'
+include ':sdk-thread-library'
+include ':sdk-ui-library'
 include ':app'
 rootProject.name='Interview'

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HandlerThreadActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:textAllCaps="false"
+                android:onClick="click1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启任务1" />
+            <Button
+                android:textAllCaps="false"
+                android:onClick="click2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启任务2" />
+            <Button
+                android:textAllCaps="false"
+                android:onClick="click1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启任务3" />
+            <Button
+                android:textAllCaps="false"
+                android:onClick="click1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启任务4" />
+
+            <ImageView
+                android:id="@+id/images1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/images2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
