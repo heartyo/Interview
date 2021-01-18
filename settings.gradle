@@ -1,3 +1,5 @@
+include ':sdk-third-library'
+include ':sdk-jar-library'
 include ':sdk-framework-library'
 include ':sdk-thread-library'
 include ':sdk-ui-library'

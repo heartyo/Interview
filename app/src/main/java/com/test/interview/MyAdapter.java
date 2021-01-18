@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.framework.HandlerAct;
+import com.test.third.retrofit.RetrofitActivity;
 import com.test.thread.asynctask.AsyncTaskAct;
 import com.test.ui.fragment.FragmentAct;
 import com.test.ui.service.ServiceAct;
@@ -29,6 +30,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         list.add(new BeanData("IntenService", "IntenService", ServiceAct.class));
         list.add(new BeanData("Fragment", "Fragment", FragmentAct.class));
         list.add(new BeanData("View", "View", ViewAct.class));
+        list.add(new BeanData("retrofit", "retrofit", RetrofitActivity.class));
     }
 
     @NonNull
